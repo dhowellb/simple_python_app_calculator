@@ -8,3 +8,7 @@ class BaseLogger:
         timestamp_string = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         with open(self.log_file_name, "a") as log_file_object:
             log_file_object.write(f"[{timestamp_string}] RUNTIME ERROR: {error_message}\n")
+class CalculatorError(Exception):
+
+    def __init__(self, error_message="A calculator error occurred."):
+        super().__init__(error_message)
