@@ -39,11 +39,14 @@ class AppCalculator:
             self.display_menu()
             user_choice = input("Choose an operation (1/2/3/4): ")
             try:
-                # ... code ...
-                print(f"Result: {calculation_result} maangas")
-                # (DITO NA NAPUTOL ANG MILESTONE 4)
                 if user_choice not in ['1', '2', '3', '4']:
                     raise InvalidOperationError(f"User attempted to select invalid option: {user_choice}")
                 first_number, second_number = self.get_user_numbers()
                 calculation_result = self.perform_calculation(user_choice, first_number, second_number)
                 print(f"Result: {calculation_result} maangas")
+            except ValueError:
+                error_logger = CalculatorError("User entered letters or symbols instead of numbers.")
+                print("Error: Invalid input! Please enter numbers only. (Error Logged)")
+            except ZeroDivisionError as zero_error:
+                error_logger = CalculatorError(str(zero_error))
+                print("Error: Math violation! You cannot divide by zero. (Error Logged)")
