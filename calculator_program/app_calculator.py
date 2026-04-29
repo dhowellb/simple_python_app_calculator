@@ -60,3 +60,6 @@ class AppCalculator:
                 if retry_choice.strip().lower() != 'y':
                     self.is_running = False
                     print("Thank you!")
+if __name__ == "__main__":
+    calculator_instance = AppCalculator()
+    calculator_instance.run_application()
