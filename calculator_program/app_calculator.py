@@ -74,6 +74,20 @@ class MaangasCalculatorGui:
             else:
                 self.current_expression += clicked_text
             self.display_variable.set(self.current_expression)
+    def calculate_result(self):
+        try:
+            expression_to_evaluate = self.current_expression.replace("^", "**")
+            final_result = eval(expression_to_evaluate)
+            self.display_variable.set(f"{final_result} maangas")
+            self.current_expression = str(final_result)
+        except ZeroDivisionError as zero_error:
+            self.display_variable.set("Error: Zero Division")
+            self.current_expression = ""
+            error_logger = CalculatorError(str(zero_error))
+        except Exception as general_error:
+            self.display_variable.set("Error: Invalid Syntax")
+            self.current_expression = ""
+            error_logger = CalculatorError(str(general_error))
     def calculate_square_root(self):
         try:
             number_to_root = float(self.current_expression)
