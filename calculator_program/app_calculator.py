@@ -10,3 +10,14 @@ class AppCalculator:
 
     def __init__(self):
         self.is_running = True
+    def display_menu(self):
+        print("\n--- Simple App Calculator ---")
+        print("1. Addition")
+        print("2. Subtraction")
+        print("3. Multiplication")
+        print("4. Division")
+
+    def get_user_numbers(self):
+        first_number = float(input("Enter the first number: "))
+        second_number = float(input("Enter the second number: "))
+        return first_number, second_number
