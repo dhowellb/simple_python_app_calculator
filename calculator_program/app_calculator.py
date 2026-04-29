@@ -31,3 +31,27 @@ class MaangasCalculatorGui:
             pady=20
         )
         self.display_label.pack(expand=True, fill="both")
+    def setup_buttons(self):
+        self.buttons_frame = tkinter.Frame(self.main_window, bg="black")
+        self.buttons_frame.pack(expand=True, fill="both")
+        button_grid_layout = [
+            ["C", "√", "%", "/"],
+            ["7", "8", "9", "*"],
+            ["4", "5", "6", "-"],
+            ["1", "2", "3", "+"],
+            ["0", ".", "^", "="]
+        ]
+        for row_index, row_content in enumerate(button_grid_layout):
+            self.buttons_frame.rowconfigure(row_index, weight=1)
+            for column_index, button_text in enumerate(row_content):
+                self.buttons_frame.columnconfigure(column_index, weight=1)
+                action_command = lambda current_text=button_text: self.handle_button_click(current_text)
+                calculator_button = tkinter.Button(
+                    self.buttons_frame,
+                    text=button_text,
+                    font=("Arial", 18, "bold"),
+                    bg="white",
+                    fg="black",
+                    command=action_command
+                )
+                calculator_button.grid(row=row_index, column=column_index, sticky="nsew", padx=2, pady=2)
