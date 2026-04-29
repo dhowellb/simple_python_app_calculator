@@ -34,3 +34,16 @@ class AppCalculator:
             return first_number / second_number
         else:
             raise InvalidOperationError(f"Menu choice '{user_choice}' is not valid.")
+    def run_application(self):
+        while self.is_running:
+            self.display_menu()
+            user_choice = input("Choose an operation (1/2/3/4): ")
+            try:
+                # ... code ...
+                print(f"Result: {calculation_result} maangas")
+                # (DITO NA NAPUTOL ANG MILESTONE 4)
+                if user_choice not in ['1', '2', '3', '4']:
+                    raise InvalidOperationError(f"User attempted to select invalid option: {user_choice}")
+                first_number, second_number = self.get_user_numbers()
+                calculation_result = self.perform_calculation(user_choice, first_number, second_number)
+                print(f"Result: {calculation_result} maangas")
