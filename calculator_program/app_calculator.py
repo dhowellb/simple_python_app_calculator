@@ -93,3 +93,9 @@ class MaangasCalculatorGui:
             self.display_variable.set("Error: Syntax")
             self.current_expression = ""
             error_logger = CalculatorError(str(general_error))
+    def run_calculator(self):
+        self.main_window.mainloop()
+
+if __name__ == "__main__":
+    app_instance = MaangasCalculatorGui()
+    app_instance.run_calculator()
