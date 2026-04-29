@@ -50,3 +50,13 @@ class AppCalculator:
             except ZeroDivisionError as zero_error:
                 error_logger = CalculatorError(str(zero_error))
                 print("Error: Math violation! You cannot divide by zero. (Error Logged)")
+            except InvalidOperationError as custom_error:
+                print(f"Error: Please select a valid number from the menu. (Error Logged)")
+            except Exception as general_error:
+                error_logger = CalculatorError(str(general_error))
+                print("An unexpected error occurred. (Error Logged)")
+            finally:
+                retry_choice = input("\nDo you want to try again? (y/n): ")
+                if retry_choice.strip().lower() != 'y':
+                    self.is_running = False
+                    print("Thank you!")
