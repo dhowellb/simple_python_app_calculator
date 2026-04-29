@@ -21,3 +21,16 @@ class AppCalculator:
         first_number = float(input("Enter the first number: "))
         second_number = float(input("Enter the second number: "))
         return first_number, second_number
+    def perform_calculation(self, user_choice, first_number, second_number):
+        if user_choice == '1':
+            return first_number + second_number
+        elif user_choice == '2':
+            return first_number - second_number
+        elif user_choice == '3':
+            return first_number * second_number
+        elif user_choice == '4':
+            if second_number == 0:
+                raise ZeroDivisionError("Cannot divide by zero.")
+            return first_number / second_number
+        else:
+            raise InvalidOperationError(f"Menu choice '{user_choice}' is not valid.")
