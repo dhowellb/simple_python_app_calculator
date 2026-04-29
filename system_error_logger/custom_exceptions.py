@@ -14,3 +14,7 @@ class CalculatorError(Exception):
         super().__init__(error_message)
         self.logger_instance = BaseLogger()
         self.logger_instance.write_error(error_message)
+class InvalidOperationError(CalculatorError):
+
+    def __init__(self, error_message="Invalid operation selected."):
+        pass
