@@ -74,3 +74,22 @@ class MaangasCalculatorGui:
             else:
                 self.current_expression += clicked_text
             self.display_variable.set(self.current_expression)
+    def calculate_square_root(self):
+        try:
+            number_to_root = float(self.current_expression)
+            if number_to_root < 0:
+                self.display_variable.set("Error: Negative Root")
+                self.current_expression = ""
+                error_logger = CalculatorError("User attempted square root of a negative number.")
+            else:
+                root_result = math.sqrt(number_to_root)
+                self.display_variable.set(f"{root_result} maangas")
+                self.current_expression = str(root_result)
+        except ValueError as value_error:
+            self.display_variable.set("Error: Invalid Input")
+            self.current_expression = ""
+            error_logger = CalculatorError(str(value_error))
+        except Exception as general_error:
+            self.display_variable.set("Error: Syntax")
+            self.current_expression = ""
+            error_logger = CalculatorError(str(general_error))
