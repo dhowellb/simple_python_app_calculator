@@ -17,3 +17,17 @@ class MaangasCalculatorGui:
         self.current_expression = ""
         self.setup_display()
         self.setup_buttons()
+    def setup_display(self):
+        self.display_variable = tkinter.StringVar()
+        self.display_variable.set("0")
+        self.display_label = tkinter.Label(
+            self.main_window,
+            textvariable=self.display_variable,
+            font=("Arial", 24, "bold"),
+            bg="black",
+            fg="white",
+            anchor="e",
+            padx=20,
+            pady=20
+        )
+        self.display_label.pack(expand=True, fill="both")
