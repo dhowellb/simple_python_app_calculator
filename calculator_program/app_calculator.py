@@ -55,3 +55,22 @@ class MaangasCalculatorGui:
                     command=action_command
                 )
                 calculator_button.grid(row=row_index, column=column_index, sticky="nsew", padx=2, pady=2)
+    def handle_button_click(self, clicked_text):
+        current_display_text = self.display_variable.get()
+        if "maangas" in current_display_text or "Error" in current_display_text:
+            self.current_expression = ""
+            self.display_variable.set("0")
+            current_display_text = "0"
+        if clicked_text == "C":
+            self.current_expression = ""
+            self.display_variable.set("0")
+        elif clicked_text == "=":
+            self.calculate_result()
+        elif clicked_text == "√":
+            self.calculate_square_root()
+        else:
+            if current_display_text == "0":
+                self.current_expression = clicked_text
+            else:
+                self.current_expression += clicked_text
+            self.display_variable.set(self.current_expression)
