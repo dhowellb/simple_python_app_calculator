@@ -18,3 +18,4 @@ class InvalidOperationError(CalculatorError):
 
     def __init__(self, error_message="Invalid operation selected."):
         pass
+        super().__init__(error_message)
